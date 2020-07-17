@@ -1,0 +1,13 @@
+root = true
+
+[*]
+end_of_line = lf
+
+[*.{ts,js,py}]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+
+[{package.json}]
+indent_style = tab
+indent_size = 4

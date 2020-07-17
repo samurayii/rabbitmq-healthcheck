@@ -1,0 +1,54 @@
+{
+    "name": "template",
+    "version": "0.0.1",
+    "description": "Template for nodejs module with typescript",
+    "main": "index.js",
+    "scripts": {
+        "ncu": "ncu",
+        "build": "rimraf ./dist && npm run lint && tsc && json-key-remover",
+        "lint": "eslint \"./src/**/*.{js,ts}\" --quiet --fix && tsc --noEmit",
+        "lint:tests": "eslint \"./tests/**/*.{js,ts}\" --quiet --fix",
+        "test": "mocha -r ts-node/register --config ./tests/mocha.config.json",
+        "publish": "npm run build && cd ./dist && npm publish"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samurayii/template-project-ts-module.git"
+    },
+    "keywords": [
+        "templates",
+        "typescript",
+        "module"
+    ],
+    "author": "Nuzhnov A.A.",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/samurayii/template-project-ts-module/issues"
+    },
+    "homepage": "https://github.com/samurayii/template-project-ts-module.git#readme",
+    "devDependencies": {
+        "@types/chalk": "^2.2.0",
+        "@types/find-package-json": "^1.1.1",
+        "@types/mocha": "^8.0.0",
+        "@types/node": "^14.0.23",
+        "@typescript-eslint/eslint-plugin": "^3.6.1",
+        "@typescript-eslint/parser": "^3.6.1",
+        "eslint": "^7.4.0",
+        "json-key-remover": "^0.0.2",
+        "mocha": "^8.0.1",
+        "ncp": "^2.0.0",
+        "npm-check-updates": "^7.0.2",
+        "rimraf": "^3.0.2",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.7"
+    },
+    "remover": {
+        "target": "./package.json",
+        "destination": "./dist/package.json",
+        "remove": [
+            "remover",
+            "devDependencies",
+            "scripts"
+        ]
+    }
+}
