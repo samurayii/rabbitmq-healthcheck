@@ -22,7 +22,6 @@
         "experimentalDecorators": true
     },
     "include": [
-        "src/**/*",
-        "tests/**/*"
+        "src/**/*"
     ]
 }
