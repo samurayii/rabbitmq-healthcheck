@@ -4,12 +4,13 @@
     "description": "Template for nodejs module with typescript",
     "main": "index.js",
     "scripts": {
+        "up": "ncu && ncu -u && rimraf ./package-lock.json && npm i",
         "ncu": "ncu",
+        "pub": "npm run build && cd ./dist && npm publish && rimraf ./dist",
         "build": "rimraf ./dist && npm run lint && tsc && json-key-remover && ncp ./README.md ./dist/README.md",
         "lint": "eslint \"./src/**/*.{js,ts}\" --quiet --fix && tsc --noEmit",
         "lint:tests": "eslint \"./tests/**/*.{js,ts}\" --quiet --fix",
-        "test": "mocha -r ts-node/register --config ./tests/mocha.config.json",
-        "publish": "npm run build && cd ./dist && npm publish"
+        "test": "mocha -r ts-node/register --config ./tests/mocha.config.json"
     },
     "repository": {
         "type": "git",
