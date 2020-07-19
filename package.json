@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "ncu": "ncu",
-        "build": "rimraf ./dist && npm run lint && tsc && json-key-remover",
+        "build": "rimraf ./dist && npm run lint && tsc && json-key-remover && ncp ./README.md ./dist/README.md",
         "lint": "eslint \"./src/**/*.{js,ts}\" --quiet --fix && tsc --noEmit",
         "lint:tests": "eslint \"./tests/**/*.{js,ts}\" --quiet --fix",
         "test": "mocha -r ts-node/register --config ./tests/mocha.config.json",
