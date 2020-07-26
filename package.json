@@ -1,8 +1,14 @@
 {
     "name": "template",
     "version": "0.0.1",
-    "description": "Template for nodejs module with typescript",
+    "description": "Template for nodejs cli app with typescript",
     "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "bin": {
+        "template-cli": "./index.js"
+    },
     "scripts": {
         "up": "ncu && ncu -u && rimraf ./package-lock.json && npm i",
         "ncu": "ncu",
@@ -14,19 +20,19 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/samurayii/template-project-ts-module.git"
+        "url": "git+https://github.com/samurayii/template-project-ts-cli.git"
     },
     "keywords": [
         "templates",
         "typescript",
-        "module"
+        "cli"
     ],
     "author": "Nuzhnov A.A.",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/samurayii/template-project-ts-module/issues"
+        "url": "https://github.com/samurayii/template-project-ts-cli/issues"
     },
-    "homepage": "https://github.com/samurayii/template-project-ts-module.git#readme",
+    "homepage": "https://github.com/samurayii/template-project-ts-cli.git#readme",
     "devDependencies": {
         "@types/chalk": "^2.2.0",
         "@types/find-package-json": "^1.1.1",
