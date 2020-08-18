@@ -34,8 +34,6 @@
     },
     "homepage": "https://github.com/samurayii/template-project-ts-cli.git#readme",
     "devDependencies": {
-        "@types/chalk": "^2.2.0",
-        "@types/find-package-json": "^1.1.1",
         "@types/mocha": "^8.0.0",
         "@types/node": "^14.0.23",
         "@typescript-eslint/eslint-plugin": "^3.6.1",
