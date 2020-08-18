@@ -47,7 +47,6 @@
         "npm-check-updates": "^7.0.2",
         "rimraf": "^3.0.2",
         "ts-node": "^8.10.2",
-        "rimraf": "^3.0.2",
         "typescript": "^3.9.7"
     },
     "remover": {
