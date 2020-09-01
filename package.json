@@ -13,10 +13,8 @@
         "up": "ncu && ncu -u && rimraf ./package-lock.json && npm i",
         "ncu": "ncu",
         "pub": "npm run build && npm publish ./dist && rimraf ./dist",
-        "build": "rimraf ./dist && npm run lint && tsc && json-key-remover && copy-files-from-to",
-        "lint": "eslint \"./src/**/*.{js,ts}\" --quiet --fix && tsc --noEmit",
-        "lint:tests": "eslint \"./tests/**/*.{js,ts}\" --quiet --fix",
-        "test": "mocha -r ts-node/register --config ./tests/mocha.config.json"
+        "build": "rimraf ./dist && npm run lint && tsc && json-key-remover && ncp ./README.md ./dist/README.md",
+        "lint": "eslint \"./src/**/*.{js,ts}\" --quiet --fix && tsc --noEmit"
     },
     "repository": {
         "type": "git",
@@ -34,18 +32,27 @@
     },
     "homepage": "https://github.com/samurayii/template-project-ts-cli.git#readme",
     "devDependencies": {
-        "@types/mocha": "^8.0.0",
+        "@types/chalk": "^2.2.0",
+        "@types/find-package-json": "^1.1.1",
         "@types/node": "^14.0.23",
         "@typescript-eslint/eslint-plugin": "^3.6.1",
         "@typescript-eslint/parser": "^3.6.1",
         "eslint": "^7.4.0",
         "json-key-remover": "^0.0.2",
-        "mocha": "^8.0.1",
+        "ncp": "^2.0.0",
         "copy-files-from-to": "^3.1.4",
         "npm-check-updates": "^7.0.2",
         "rimraf": "^3.0.2",
         "ts-node": "^8.10.2",
         "typescript": "^3.9.7"
+    },
+    "dependencies": {
+        "commander": "^6.1.0",
+        "json-from-default-schema": "^0.1.4",
+        "ajv": "^6.12.4",
+        "chalk": "^4.1.0",
+        "find-package-json": "^1.2.0",
+        "jtomler": "^0.0.5"
     },
     "remover": {
         "target": "./package.json",
@@ -55,11 +62,5 @@
             "devDependencies",
             "scripts"
         ]
-    },
-    "copyFiles": [
-        {
-            "from": "README.md",
-            "to": "./dist/README.md"
-        }
-    ]
+    }
 }
