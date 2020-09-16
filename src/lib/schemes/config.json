@@ -1,1 +1,180 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "logger": {
+            "type": "object",
+            "default": {},
+            "env": "RABBITMQ_HEALTHCHECK_LOGGER",
+            "properties": {
+                "enable": {
+                    "type": "boolean",
+                    "default": true,
+                    "env": "RABBITMQ_HEALTHCHECK_LOGGER_ENABLE",
+                    "enum": [true, false]
+                },
+                "timestamp": {
+                    "type": "string",
+                    "default": "time",
+                    "env": "RABBITMQ_HEALTHCHECK_LOGGER_TIMESTAMP",
+                    "enum": ["none", "time", "full"]
+                },
+                "type": {
+                    "type": "boolean",
+                    "default": true,
+                    "env": "RABBITMQ_HEALTHCHECK_LOGGER_TYPE",
+                    "enum": [true, false]
+                },
+                "mode": {
+                    "type": "string",
+                    "default": "prod",
+                    "env": "RABBITMQ_HEALTHCHECK_LOGGER_MODE",
+                    "enum": ["dev", "prod", "debug"]
+                }
+            },
+            "required": [
+                "enable",
+                "mode",
+                "timestamp",
+                "type"
+            ]
+        },
+        "api": {
+            "type": "object",
+            "default": {},
+            "env": "RABBITMQ_HEALTHCHECK_API",
+            "properties": {
+                "enable": {
+                    "type": "boolean",
+                    "default": true,
+                    "env": "RABBITMQ_HEALTHCHECK_API_ENABLE",
+                    "enum": [true, false]
+                },
+                "listening": {
+                    "type": "string",
+                    "default": "*:3001",
+                    "minLength": 0,
+                    "maxLength": 64,
+                    "env": "RABBITMQ_HEALTHCHECK_API_LISTENING",
+                    "pattern": "^([a-zA-Z]{1}[-a-zA-Z0-9.]{0,255}|[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}|\\*)\\:[0-9]{1,5}$"
+                },
+                "prefix": {
+                    "type": "string",
+                    "default": "/",
+                    "minLength": 0,
+                    "maxLength": 32,
+                    "env": "RABBITMQ_HEALTHCHECK_API_PREFIX",
+                    "pattern": "^(\/|)[a-zA-Z]{0,1}[a-zA-Z0-9\/]{0,63}$"
+                },
+                "proxy": {
+                    "type": "boolean",
+                    "default": false,
+                    "env": "RABBITMQ_HEALTHCHECK_API_PROXY",
+                    "enum": [true, false]
+                },
+                "subdomain_offset": {
+                    "type": "integer",
+                    "default": 2,
+                    "env": "RABBITMQ_HEALTHCHECK_API_SUBDOMAIN_OFFSET",
+                    "minimum": 0
+                },
+                "proxy_header": {
+                    "type": "string",
+                    "default": "X-Forwarded-For",
+                    "env": "RABBITMQ_HEALTHCHECK_API_PROXY_HEADER",
+                    "minLength": 0,
+                    "maxLength": 32
+                },
+                "ips_count": {
+                    "type": "integer",
+                    "default": 0,
+                    "env": "RABBITMQ_HEALTHCHECK_API_IPS_COUNT",
+                    "minimum": 0
+                },
+                "env": {
+                    "type": "string",
+                    "default": "development",
+                    "env": "RABBITMQ_HEALTHCHECK_API_ENV",
+                    "minLength": 0,
+                    "maxLength": 32
+                },
+                "keys": {
+                    "type": "array",
+                    "env": "RABBITMQ_HEALTHCHECK_API_KEYS",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 1
+                }
+            },
+            "required": [
+                "enable",
+                "listening",
+                "prefix",
+                "proxy",
+                "subdomain_offset",
+                "proxy_header",
+                "ips_count",
+                "env"
+            ]
+        },
+        "rabbitmq": {
+            "type": "object",
+            "default": {},
+            "env": "RABBITMQ_HEALTHCHECK_RABBITMQ",
+            "properties": {
+                "reconnect_interval": {
+                    "type": "integer",
+                    "default": 10,
+                    "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_RECONNECT_INTERVAL",
+                    "minimum": 1
+                },
+                "ping_interval": {
+                    "type": "integer",
+                    "default": 5,
+                    "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_PING_INTERVAL",
+                    "minimum": 1
+                },
+                "host": {
+                    "type": "string",
+                    "default": "user:password@host:5672",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_HOST"
+                },
+                "v_host": {
+                    "type": "string",
+                    "default": "/",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_V_HOST"
+                },
+                "heartbeat": {
+                    "type": "integer",
+                    "default": 30,
+                    "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_HEARTBEAT",
+                    "minimum": 1
+                },
+                "queue": {
+                    "type": "string",
+                    "default": "_ping",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_QUEUE"
+                }
+            },
+            "required": [
+                "reconnect_interval",
+                "ping_interval",
+                "host",
+                "v_host",
+                "heartbeat",
+                "queue"
+            ]
+        }
+    },
+    "required": [
+        "logger",
+        "rabbitmq"
+    ]
+}

@@ -1,0 +1,24 @@
+[logger]                # настройка логгера
+    mode = "prod"       # режим (prod или dev или debug)
+    enable = true       # активация логгера
+    timestamp = "none"  # выводить время лога (none, time или full)
+    type = true         # выводить тип лога (true или false)
+
+[api]                                   # настройка API
+    enable = true                       # активация API
+    listening = "*:3001"                # настройка слушателя
+    prefix = "/"                        # префикс
+    proxy = false                       # когда поле заголовка true proxy будут доверенным
+    subdomain_offset = 2                # смещение от поддомена для игнорирования
+    proxy_header = "X-Forwarded-For"    # заголовок IP прокси
+    ips_count = 0                       # максимальное количество IP прочитанное из заголовка прокси, по умолчанию 0 (означает бесконечность)
+    env = "development"                 # среда для сервера koa
+    #keys = []                          # массив подписанных ключей cookie
+
+[rabbitmq]
+    reconnect_interval = 10             # интервал переподключения в секундах
+    ping_interval = 5                   # интервал опроса
+    host = "user:password@host:5672"    # адрес сервера
+    v_host = "/"                        # виртуальный хост rabbitmq 
+    heartbeat = 30                      # сердцебиение
+    queue = "_ping"                     # имя очереди

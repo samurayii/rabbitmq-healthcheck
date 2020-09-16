@@ -1,0 +1,6 @@
+[logger]
+    mode = "debug"
+    enable = true
+
+[rabbitmq]
+    host = "user:password@host:5672"
