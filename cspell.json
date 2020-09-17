@@ -2,8 +2,10 @@
     "version": "0.1",
     "words": [
         "HEALTHCHECK",
+        "Helathcheck",
         "jtomler",
         "Nuzhnov",
-        "rabbitmq"
+        "rabbitmq",
+        "settimeout"
     ]
 }

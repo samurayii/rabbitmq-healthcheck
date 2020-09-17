@@ -137,7 +137,7 @@
                 },
                 "host": {
                     "type": "string",
-                    "default": "user:password@host:5672",
+                    "default": "guest:guest@host:5672",
                     "minLength": 1,
                     "maxLength": 256,
                     "env": "RABBITMQ_HEALTHCHECK_RABBITMQ_HOST"

@@ -18,7 +18,7 @@
 [rabbitmq]
     reconnect_interval = 10             # интервал переподключения в секундах
     ping_interval = 5                   # интервал опроса
-    host = "user:password@host:5672"    # адрес сервера
+    host = "guest:guest@host:5672"      # адрес сервера
     v_host = "/"                        # виртуальный хост rabbitmq 
     heartbeat = 30                      # сердцебиение
     queue = "_ping"                     # имя очереди

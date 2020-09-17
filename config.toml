@@ -3,4 +3,4 @@
     enable = true
 
 [rabbitmq]
-    host = "user:password@host:5672"
+    host = "user:password@localhost:5672"
