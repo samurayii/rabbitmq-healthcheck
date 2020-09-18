@@ -1,6 +1,6 @@
 {
     "name": "rabbitmq-healthcheck",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Healthcheck for rabbitmq",
     "main": "index.js",
     "directories": {

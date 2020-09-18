@@ -5,8 +5,6 @@ import { Logger } from "logger-flx";
 import { Singleton } from "di-ts-decorators";
 import { RabbitMQHelathcheck } from "./lib/rabbitmq-healthcheck";
 
-console.log(config);
-
 import "./http";
 
 const logger = new Logger(config.logger);

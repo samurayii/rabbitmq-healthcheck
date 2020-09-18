@@ -15,7 +15,7 @@
     env = "development"                 # среда для сервера koa
     #keys = []                          # массив подписанных ключей cookie
 
-[rabbitmq]
+[rabbitmq]                              # настройки подключения к rabbitmq
     reconnect_interval = 10             # интервал переподключения в секундах
     ping_interval = 5                   # интервал опроса
     host = "guest:guest@host:5672"      # адрес сервера

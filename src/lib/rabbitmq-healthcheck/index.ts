@@ -19,6 +19,7 @@ export class RabbitMQHelathcheck implements IRabbitMQHelathcheck {
     private _channel: Channel
     private _connection: Connection
     private _running_flag: boolean
+    private _start_time: number
 
     constructor (
         private readonly _config: IRabbitMQHelathcheckConfig,
@@ -29,6 +30,7 @@ export class RabbitMQHelathcheck implements IRabbitMQHelathcheck {
         this._close_connection_flag = true;
         this._healthy = false;
         this._running_flag = false;
+        this._start_time = Date.now();
 
         this._host = "localhost";
         this._port = 5672;
@@ -61,6 +63,10 @@ export class RabbitMQHelathcheck implements IRabbitMQHelathcheck {
 
     get healthy (): boolean {
         return this._healthy;
+    }
+
+    get time (): number {
+        return this._start_time;
     }
 
     run (): void {

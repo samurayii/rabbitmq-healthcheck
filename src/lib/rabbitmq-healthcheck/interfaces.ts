@@ -4,6 +4,7 @@ export interface IRabbitMQHelathcheck {
     run: () => void
     stop: () => void
     readonly healthy: boolean
+    readonly time: number
 }
 
 export interface IRabbitMQHelathcheckConfig {

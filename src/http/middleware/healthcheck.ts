@@ -16,6 +16,51 @@ export class Healthcheck implements IMiddleware {
         this._logger.info(`[${this._app_id}] Middleware "${this._name}" assigned to application`, "dev");
     }
 
+    _getTextTime (time: number): string {
+
+        let text = "";
+
+        const days: number = Math.floor(time/86400);
+
+        time = time - (days*86400);
+
+        const hours: number = Math.floor(time/3600);
+
+        time = time - (hours*3600);
+
+        const minutes: number = Math.floor(time/60);
+
+        time = time - (minutes*60);
+
+        const seconds: number = Math.floor(time);
+
+        if (days > 0) {
+            text = `${text}${days}d`;
+        }
+        if (hours > 0) {
+            text = `${text}${hours}h`;
+        }
+        if (minutes > 0) {
+            text = `${text}${minutes}m`;
+        }
+        if (seconds > 0) {
+            text = `${text}${seconds}s`;
+        }
+
+        return text;
+    }
+
+    _responseStatus (ctx: Context): void {
+
+        ctx.body = {
+            healthy: this._rabbitmq_healthcheck.healthy,
+            work_time: Math.floor((Date.now() - this._rabbitmq_healthcheck.time)/1000),
+            human_work_time: this._getTextTime(Math.floor((Date.now() - this._rabbitmq_healthcheck.time)/1000))
+        };
+        ctx.status = 200;
+
+    }
+
     _response (ctx: Context): void {
 
         if (this._rabbitmq_healthcheck.healthy === true) {
@@ -31,6 +76,11 @@ export class Healthcheck implements IMiddleware {
     use (config: IApiServerConfig): unknown {
 
         return (ctx: Context, next: Next) => {
+
+            if (ctx.url === "/healthcheck/status") {
+                this._responseStatus(ctx);
+                return;
+            }
 
             if (ctx.url === "/healthcheck") {
                 this._response(ctx);
