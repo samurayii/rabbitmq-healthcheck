@@ -108,6 +108,7 @@
 | / | GET | 200 | проверить здоровье сервиса | OK |
 | /healthcheck | GET | 200 | проверить здоровье сервиса | OK |
 | /healthcheck/status | GET | 200 | получить статус здоровья | [пример](#api_status) |
+| /_ping | GET | 200 | проверить доступность сервера | OK |
 
 ### <a name="api_status"></a> Пример ответа запроса: /healthcheck/status
 
