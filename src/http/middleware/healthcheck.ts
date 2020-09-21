@@ -77,6 +77,12 @@ export class Healthcheck implements IMiddleware {
 
         return (ctx: Context, next: Next) => {
 
+            if (ctx.url === "/_ping") {
+                ctx.body = "OK";
+                ctx.status = 200;
+                return;
+            }
+
             if (ctx.url === "/healthcheck/status") {
                 this._responseStatus(ctx);
                 return;
